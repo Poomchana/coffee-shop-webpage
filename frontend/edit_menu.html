@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{% if item %}Edit{% else %}Add{% endif %} Menu Item</h1>
+<form method="POST">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{ item[1] if item else '' }}" required>
+    </div>
+    <div>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description">{{ item[2] if item else '' }}</textarea>
+    </div>
+    <div>
+        <label for="price">Price:</label>
+        <input type="number" step="0.01" id="price" name="price" value="{{ item[3] if item else '' }}" required>
+    </div>
+    <div>
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" value="{{ item[4] if item else '' }}">
+    </div>
+    <div>
+        <label for="is_available">Available:</label>
+        <input type="checkbox" id="is_available" name="is_available" {% if item and item[5] %}checked{% endif %}>
+    </div>
+    <button type="submit">{% if item %}Update{% else %}Add{% endif %} Item</button>
+</form>
+{% endblock %}

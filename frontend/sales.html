@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<div>
+    <a href="{{ url_for('sales.view_sales', period='day') }}">Today</a>
+    <a href="{{ url_for('sales.view_sales', period='month') }}">This Month</a>
+    <a href="{{ url_for('sales.view_sales', period='year') }}">This Year</a>
+    <a href="{{ url_for('sales.view_sales') }}">All</a>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Discount</th>
+            <th>Payment Method</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sale in sales %}
+        <tr>
+            <td>{{ sale[0] }}</td>
+            <td>{{ sale[1] }}</td>
+            <td>{{ sale[2] }}</td>
+            <td>{{ sale[3] }}</td>
+            <td>{{ sale[4] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div>
+    <h3>Total Sales: {{ total_sales }}</h3>
+    <h3>Total Discounts: {{ total_discounts }}</h3>
+    <h3>Net Sales: {{ total_sales - total_discounts }}</h3>
+</div>
+{% endblock %}

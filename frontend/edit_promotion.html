@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>{% if promotion %}Edit{% else %}Add{% endif %} Promotion</h1>
+    
+    <form method="POST" class="promotion-form">
+        <div class="form-group">
+            <label for="name">Promotion Name:</label>
+            <input type="text" id="name" name="name" 
+                   value="{{ promotion[1] if promotion else '' }}" 
+                   class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" 
+                      class="form-control">{{ promotion[2] if promotion else '' }}</textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="promo_code">Promo Code:</label>
+            <input type="text" id="promo_code" name="promo_code" 
+                   value="{{ promotion[3] if promotion else '' }}" 
+                   class="form-control" required>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="start_date">Start Date:</label>
+                <input type="date" id="start_date" name="start_date" 
+                       value="{{ promotion[4] if promotion else '' }}" 
+                       class="form-control" required>
+            </div>
+            
+            <div class="form-group col-md-6">
+                <label for="end_date">End Date:</label>
+                <input type="date" id="end_date" name="end_date" 
+                       value="{{ promotion[5] if promotion else '' }}" 
+                       class="form-control" required>
+            </div>
+        </div>
+        
+        <div class="form-group form-check">
+            <input type="checkbox" id="is_active" name="is_active" 
+                   class="form-check-input" 
+                   {% if promotion and promotion[6] %}checked{% endif %}>
+            <label class="form-check-label" for="is_active">Active</label>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">
+            {% if promotion %}Update{% else %}Add{% endif %} Promotion
+        </button>
+        
+        {% if promotion %}
+        <a href="{{ url_for('promotions.delete_promotion', promotion_id=promotion[0]) }}" 
+           class="btn btn-danger ml-2" 
+           onclick="return confirm('Are you sure you want to delete this promotion?')">
+            Delete
+        </a>
+        {% endif %}
+    </form>
+    
+    <a href="{{ url_for('promotions.view_promotions') }}" class="btn btn-secondary mt-3">
+        Back to Promotions List
+    </a>
+</div>
+{% endblock %}

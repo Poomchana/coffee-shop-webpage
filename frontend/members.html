@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Members</h1>
+<a href="{{ url_for('members.add_member') }}">Add New Member</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Points</th>
+            <th>Join Date</th>
+            <th>Active</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for member in members %}
+        <tr>
+            <td>{{ member[0] }}</td>
+            <td>{{ member[1] }}</td>
+            <td>{{ member[2] }}</td>
+            <td>{{ member[3] }}</td>
+            <td>{{ member[4] }}</td>
+            <td>{{ member[5] }}</td>
+            <td>{{ 'Yes' if member[6] else 'No' }}</td>
+            <td>
+                <a href="{{ url_for('members.edit_member', member_id=member[0]) }}">Edit</a>
+                <a href="{{ url_for('members.delete_member', member_id=member[0]) }}" onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Dashboard</h1>
+<p>Welcome to the Cafe Management System</p>
+
+<div>
+    <h2>Quick Stats</h2>
+    <div>
+        <h3>Inventory Items</h3>
+        <p>{{ inventory_count }}</p>
+    </div>
+    <div>
+        <h3>Menu Items</h3>
+        <p>{{ menu_count }}</p>
+    </div>
+    <div>
+        <h3>Active Members</h3>
+        <p>{{ member_count }}</p>
+    </div>
+    <div>
+        <h3>Today's Sales</h3>
+        <p>{{ today_sales }}</p>
+    </div>
+</div>
+{% endblock %}

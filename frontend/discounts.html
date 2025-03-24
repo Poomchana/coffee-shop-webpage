@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Discounts</h1>
+<a href="{{ url_for('discounts.add_discount') }}">Add New Discount</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Discount %</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Active</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for discount in discounts %}
+        <tr>
+            <td>{{ discount[0] }}</td>
+            <td>{{ discount[1] }}</td>
+            <td>{{ discount[2] }}</td>
+            <td>{{ discount[3] }}</td>
+            <td>{{ discount[4] }}</td>
+            <td>{{ discount[5] }}</td>
+            <td>{{ 'Yes' if discount[6] else 'No' }}</td>
+            <td>
+                <a href="{{ url_for('discounts.edit_discount', discount_id=discount[0]) }}">Edit</a>
+                <a href="{{ url_for('discounts.delete_discount', discount_id=discount[0]) }}" onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

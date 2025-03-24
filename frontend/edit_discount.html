@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>{% if discount %}Edit{% else %}Add{% endif %} Discount</h1>
+    
+    <form method="POST" class="discount-form">
+        <div class="form-group">
+            <label for="name">Discount Name:</label>
+            <input type="text" id="name" name="name" 
+                   value="{{ discount[1] if discount else '' }}" 
+                   class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" 
+                      class="form-control">{{ discount[2] if discount else '' }}</textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="discount_percent">Discount Percentage:</label>
+            <input type="number" step="0.01" id="discount_percent" name="discount_percent" 
+                   value="{{ discount[3] if discount else '' }}" 
+                   class="form-control" required>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="start_date">Start Date:</label>
+                <input type="date" id="start_date" name="start_date" 
+                       value="{{ discount[4] if discount else '' }}" 
+                       class="form-control" required>
+            </div>
+            
+            <div class="form-group col-md-6">
+                <label for="end_date">End Date:</label>
+                <input type="date" id="end_date" name="end_date" 
+                       value="{{ discount[5] if discount else '' }}" 
+                       class="form-control" required>
+            </div>
+        </div>
+        
+        <div class="form-group form-check">
+            <input type="checkbox" id="is_active" name="is_active" 
+                   class="form-check-input" 
+                   {% if discount and discount[6] %}checked{% endif %}>
+            <label class="form-check-label" for="is_active">Active</label>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">
+            {% if discount %}Update{% else %}Add{% endif %} Discount
+        </button>
+        
+        {% if discount %}
+        <a href="{{ url_for('discounts.delete_discount', discount_id=discount[0]) }}" 
+           class="btn btn-danger ml-2" 
+           onclick="return confirm('Are you sure you want to delete this discount?')">
+            Delete
+        </a>
+        {% endif %}
+    </form>
+    
+    <a href="{{ url_for('discounts.view_discounts') }}" class="btn btn-secondary mt-3">
+        Back to Discounts List
+    </a>
+</div>
+{% endblock %}
