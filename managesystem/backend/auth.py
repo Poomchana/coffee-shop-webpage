@@ -3,7 +3,7 @@ from sqlite3 import Error
 from backend.database import create_connection
 from backend.auth_utils import login_required
 
-auth_bp = Blueprint('auth', __name__, template_folder='../frontend/templates')
+auth_bp = Blueprint('auth', __name__, template_folder='../frontend/managesystem')
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():

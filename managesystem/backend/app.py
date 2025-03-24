@@ -10,7 +10,7 @@ from backend.user_model import User
 
 
 
-app = Flask(__name__, template_folder='../frontend')
+app = Flask(__name__, template_folder='../frontend/managesystem')
 app.secret_key = os.urandom(24)  # ใช้ค่า secret_key ที่ปลอดภัย
 
 # ตั้งค่า Flask-Login

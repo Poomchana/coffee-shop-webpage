@@ -4,7 +4,7 @@ from datetime import datetime
 from sqlite3 import Error
 from backend.auth_utils import login_required
 
-discounts_bp = Blueprint('discounts', __name__ , template_folder='../frontend')
+discounts_bp = Blueprint('discounts', __name__ , template_folder='../frontend/managesystem')
 
 @discounts_bp.route('/discounts')
 @login_required
