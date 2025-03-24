@@ -1,10 +1,13 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from backend.database import create_connection
 from datetime import datetime
+from sqlite3 import Error
+from backend.auth_utils import login_required
 
 discounts_bp = Blueprint('discounts', __name__ , template_folder='../frontend')
 
 @discounts_bp.route('/discounts')
+@login_required
 def view_discounts():
     conn = create_connection()
     if conn is not None:
@@ -20,6 +23,7 @@ def view_discounts():
     return render_template('discounts.html', discounts=[])
 
 @discounts_bp.route('/add_discount', methods=['GET', 'POST'])
+@login_required
 def add_discount():
     if request.method == 'POST':
         name = request.form['name']
@@ -48,6 +52,7 @@ def add_discount():
     return render_template('edit_discount.html', discount=None)
 
 @discounts_bp.route('/edit_discount/<int:discount_id>', methods=['GET', 'POST'])
+@login_required
 def edit_discount(discount_id):
     conn = create_connection()
     if conn is not None:
@@ -80,6 +85,7 @@ def edit_discount(discount_id):
     return redirect(url_for('discounts.view_discounts'))
 
 @discounts_bp.route('/delete_discount/<int:discount_id>')
+@login_required
 def delete_discount(discount_id):
     conn = create_connection()
     if conn is not None:

@@ -27,8 +27,8 @@
             <a href="{{ url_for('home') }}">หน้าหลัก</a>
             <a href="{{ url_for('inventory.view_inventory') }}">สต็อกสินค้า</a>
             <a href="{{ url_for('menu.view_menu') }}">จัดการเมนู</a>
-            <a href="{{url_for('discounts.add_discount')}}">จัดการส่วนลด</a>
-            <a href="{{ url_for('promotions.add_promotion') }}">จัดโปรโมชัน</a>
+            <a href="{{url_for('discounts.view_discounts')}}">จัดการส่วนลด</a>
+            <a href="{{ url_for('promotions.view_promotions') }}">จัดโปรโมชัน</a>
             <a href="{{ url_for('auth.logout') }}">ออกจากระบบ</a>
         {% else %}
             <a href="{{ url_for('auth.login') }}">เข้าสู่ระบบ</a>
