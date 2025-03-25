@@ -4,7 +4,7 @@ from datetime import datetime
 
 sales_bp = Blueprint('sales', __name__  , template_folder='../frontend/managesystem')
 
-@sales_bp.route('/sales')
+@sales_bp.route('/admin/sales')
 def view_sales():
     period = request.args.get('period', 'day')
     

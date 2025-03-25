@@ -5,7 +5,7 @@ from sqlite3 import Error
 
 menu_bp = Blueprint('menu', __name__, template_folder='../frontend/managesystem')
 
-@menu_bp.route('/menu', methods=['GET', 'POST'])
+@menu_bp.route('/admin/menu', methods=['GET', 'POST'])
 @login_required
 def view_menu():
     search_query = request.form.get('search', '')
@@ -27,7 +27,7 @@ def view_menu():
     
     return render_template('menu.html', items=items)
 
-@menu_bp.route('/add_menu_item', methods=['GET', 'POST'])
+@menu_bp.route('/admin/add_menu_item', methods=['GET', 'POST'])
 @login_required
 def add_menu_item():
     if request.method == 'POST':
@@ -52,7 +52,7 @@ def add_menu_item():
     
     return render_template('edit_menu.html', item=None)
 
-@menu_bp.route('/edit_menu_item/<int:item_id>', methods=['GET', 'POST'])
+@menu_bp.route('/admin/edit_menu_item/<int:item_id>', methods=['GET', 'POST'])
 @login_required
 def edit_menu_item(item_id):
     conn = create_connection()
@@ -84,7 +84,7 @@ def edit_menu_item(item_id):
     
     return redirect(url_for('menu.view_menu'))
 
-@menu_bp.route('/delete_menu_item/<int:item_id>')
+@menu_bp.route('/admin/delete_menu_item/<int:item_id>')
 @login_required
 def delete_menu_item(item_id):
     conn = create_connection()

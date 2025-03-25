@@ -5,7 +5,7 @@ from sqlite3 import Error
 
 promotions_bp = Blueprint('promotions', __name__, template_folder='../frontend/managesystem')
 
-@promotions_bp.route('/promotions')
+@promotions_bp.route('/admin/promotions')
 @login_required
 def view_promotions():
     conn = create_connection()
@@ -21,7 +21,7 @@ def view_promotions():
             conn.close()
     return render_template('promotions.html', promotions=promotions)
 
-@promotions_bp.route('/add_promotion', methods=['GET', 'POST'])
+@promotions_bp.route('/admin/add_promotion', methods=['GET', 'POST'])
 @login_required
 def add_promotion():
     if request.method == 'POST':
@@ -55,7 +55,7 @@ def add_promotion():
     
     return render_template('edit_promotion.html', promotion=None)
 
-@promotions_bp.route('/edit_promotion/<int:promotion_id>', methods=['GET', 'POST'])
+@promotions_bp.route('/admin/edit_promotion/<int:promotion_id>', methods=['GET', 'POST'])
 @login_required
 def edit_promotion(promotion_id):
     conn = create_connection()
@@ -94,7 +94,7 @@ def edit_promotion(promotion_id):
     
     return redirect(url_for('promotions.view_promotions'))
 
-@promotions_bp.route('/delete_promotion/<int:promotion_id>')
+@promotions_bp.route('/admin/delete_promotion/<int:promotion_id>')
 @login_required
 def delete_promotion(promotion_id):
     conn = create_connection()

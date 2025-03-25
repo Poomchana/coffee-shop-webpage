@@ -6,7 +6,7 @@ from backend.auth_utils import login_required
 
 discounts_bp = Blueprint('discounts', __name__ , template_folder='../frontend/managesystem')
 
-@discounts_bp.route('/discounts')
+@discounts_bp.route('/admin/discounts')
 @login_required
 def view_discounts():
     conn = create_connection()
@@ -22,7 +22,7 @@ def view_discounts():
             conn.close()
     return render_template('discounts.html', discounts=[])
 
-@discounts_bp.route('/add_discount', methods=['GET', 'POST'])
+@discounts_bp.route('/admin/add_discount', methods=['GET', 'POST'])
 @login_required
 def add_discount():
     if request.method == 'POST':
@@ -51,7 +51,7 @@ def add_discount():
     
     return render_template('edit_discount.html', discount=None)
 
-@discounts_bp.route('/edit_discount/<int:discount_id>', methods=['GET', 'POST'])
+@discounts_bp.route('/admin/edit_discount/<int:discount_id>', methods=['GET', 'POST'])
 @login_required
 def edit_discount(discount_id):
     conn = create_connection()
@@ -84,7 +84,7 @@ def edit_discount(discount_id):
             conn.close()
     return redirect(url_for('discounts.view_discounts'))
 
-@discounts_bp.route('/delete_discount/<int:discount_id>')
+@discounts_bp.route('/admin/delete_discount/<int:discount_id>')
 @login_required
 def delete_discount(discount_id):
     conn = create_connection()

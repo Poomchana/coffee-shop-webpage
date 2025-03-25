@@ -6,7 +6,7 @@ from sqlite3 import Error
 
 members_bp = Blueprint('members', __name__, template_folder='../frontend/managesystem')
 
-@members_bp.route('/members', methods=['GET', 'POST'])
+@members_bp.route('/admin/members', methods=['GET', 'POST'])
 @login_required
 def view_members():
     search_query = request.form.get('search', '')
@@ -28,7 +28,7 @@ def view_members():
     
     return render_template('members.html', members=members)
 
-@members_bp.route('/add_member', methods=['GET', 'POST'])
+@members_bp.route('/admin/add_member', methods=['GET', 'POST'])
 @login_required
 def add_member():
     if request.method == 'POST':
@@ -53,7 +53,7 @@ def add_member():
     
     return render_template('edit_member.html', member=None)
 
-@members_bp.route('/edit_member/<int:member_id>', methods=['GET', 'POST'])
+@members_bp.route('/admin/edit_member/<int:member_id>', methods=['GET', 'POST'])
 @login_required
 def edit_member(member_id):
     conn = create_connection()
@@ -85,7 +85,7 @@ def edit_member(member_id):
     
     return redirect(url_for('members.view_members'))
 
-@members_bp.route('/delete_member/<int:member_id>')
+@members_bp.route('/admin/delete_member/<int:member_id>')
 @login_required
 def delete_member(member_id):
     conn = create_connection()

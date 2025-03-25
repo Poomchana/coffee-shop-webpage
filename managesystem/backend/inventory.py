@@ -5,7 +5,7 @@ from sqlite3 import Error
 
 inventory_bp = Blueprint('inventory', __name__, template_folder='../frontend/managesystem')
 
-@inventory_bp.route('/inventory')
+@inventory_bp.route('/admin/admin/inventory')
 @login_required
 def view_inventory():
     conn = create_connection()
@@ -21,7 +21,7 @@ def view_inventory():
             conn.close()
     return render_template('inventory.html', items=[])
 
-@inventory_bp.route('/add_inventory', methods=['GET', 'POST'])
+@inventory_bp.route('/admin/add_inventory', methods=['GET', 'POST'])
 @login_required
 def add_inventory():
     if request.method == 'POST':
@@ -46,7 +46,7 @@ def add_inventory():
     
     return render_template('add_inventory.html')
 
-@inventory_bp.route('/edit_inventory/<int:item_id>', methods=['GET', 'POST'])
+@inventory_bp.route('/admin/edit_inventory/<int:item_id>', methods=['GET', 'POST'])
 @login_required
 def edit_inventory(item_id):
     conn = create_connection()
@@ -74,7 +74,7 @@ def edit_inventory(item_id):
             conn.close()
     return redirect(url_for('inventory.view_inventory'))
 
-@inventory_bp.route('/delete_inventory/<int:item_id>')
+@inventory_bp.route('/admin/delete_inventory/<int:item_id>')
 @login_required
 def delete_inventory(item_id):
     conn = create_connection()
@@ -95,7 +95,7 @@ from sqlite3 import Error
 
 inventory_bp = Blueprint('inventory', __name__, template_folder='../frontend')
 
-@inventory_bp.route('/inventory')
+@inventory_bp.route('/admin/inventory')
 @login_required
 def view_inventory():
     conn = create_connection()
@@ -111,7 +111,7 @@ def view_inventory():
             conn.close()
     return render_template('inventory.html', items=[])
 
-@inventory_bp.route('/add_inventory', methods=['GET', 'POST'])
+@inventory_bp.route('/admin/add_inventory', methods=['GET', 'POST'])
 @login_required
 def add_inventory():
     if request.method == 'POST':
@@ -136,7 +136,7 @@ def add_inventory():
     
     return render_template('add_inventory.html')
 
-@inventory_bp.route('/edit_inventory/<int:item_id>', methods=['GET', 'POST'])
+@inventory_bp.route('/admin/edit_inventory/<int:item_id>', methods=['GET', 'POST'])
 @login_required
 def edit_inventory(item_id):
     conn = create_connection()
@@ -164,7 +164,7 @@ def edit_inventory(item_id):
             conn.close()
     return redirect(url_for('inventory.view_inventory'))
 
-@inventory_bp.route('/delete_inventory/<int:item_id>')
+@inventory_bp.route('/admin/delete_inventory/<int:item_id>')
 @login_required
 def delete_inventory(item_id):
     conn = create_connection()

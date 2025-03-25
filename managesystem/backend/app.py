@@ -36,7 +36,7 @@ app.register_blueprint(promotions_bp)
 app.register_blueprint(sales_bp)
 app.register_blueprint(members_bp)
 
-@app.route('/')
+@app.route('/admin')
 @login_required
 def home():
     return render_template('dashboard.html')
