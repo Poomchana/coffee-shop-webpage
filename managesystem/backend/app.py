@@ -5,6 +5,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from flask import Flask, render_template, redirect, url_for, request
 from flask_login import LoginManager, login_required
 from backend.user_model import User
+from backend.auth_utils import login_required
 
 
 
