@@ -24,7 +24,7 @@ login_manager.init_app(app)
 login_manager.login_view = 'auth.login'
 
 # Import และลงทะเบียน Blueprints
-from backend.auth import auth_bp
+from backend.auth_admin import auth_bp
 from backend.inventory import inventory_bp
 from backend.menu import menu_bp
 from backend.discounts import discounts_bp

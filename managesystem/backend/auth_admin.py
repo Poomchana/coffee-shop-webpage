@@ -19,6 +19,12 @@ def login():
                 user = c.fetchone()
                 
                 if user:
+                    # ตรวจสอบว่า role เป็น admin หรือไม่
+                    if user[3] != 'admin':
+                        flash('อนุญาตให้เฉพาะผู้ดูแลระบบ (Admin) เท่านั้นเข้าสู่ระบบ', 'danger')
+                        return redirect(url_for('auth.login'))
+                    
+                    # หากเป็น admin ให้เข้าสู่ระบบ
                     session['username'] = user[1]
                     session['role'] = user[3]
                     flash('เข้าสู่ระบบสำเร็จ', 'success')
@@ -33,7 +39,7 @@ def login():
     
     return render_template('login.html')
 
-@auth_bp.route('/admin  /logout')
+@auth_bp.route('/admin/logout')
 @login_required
 def logout():
     session.clear()
