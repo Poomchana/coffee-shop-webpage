@@ -3,9 +3,9 @@ from sqlite3 import Error
 from backend.database import create_connection
 from backend.auth_utils import login_required
 
-auth_bp = Blueprint('auth', __name__, template_folder='../frontend/managesystem')
+auth_bp = Blueprint('auth', __name__, template_folder='../frontend/admin')
 
-@auth_bp.route('/login', methods=['GET', 'POST'])
+@auth_bp.route('/admin/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form['username']
@@ -22,7 +22,7 @@ def login():
                     session['username'] = user[1]
                     session['role'] = user[3]
                     flash('เข้าสู่ระบบสำเร็จ', 'success')
-                    next_page = request.args.get('next') or url_for('home')
+                    next_page = request.args.get('next') or url_for('admin')
                     return redirect(next_page)
                 else:
                     flash('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง', 'danger')
@@ -33,7 +33,7 @@ def login():
     
     return render_template('login.html')
 
-@auth_bp.route('/logout')
+@auth_bp.route('/admin  /logout')
 @login_required
 def logout():
     session.clear()

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{% if user %}Edit{% else %}Add{% endif %} Member</h1>
+<form method="POST">
+    <div>
+        <label for="username">Name:</label>
+        <input type="text" id="username" name="username" value="{{ user[1] if user else '' }}" required>
+    </div>
+    <div>
+        <label for="password">password:</label>
+        <input type="text" id="password" name="password" value="{{ user[2] if user else '' }}" required>
+    </div>
+    <div>
+        <label for="role">Role:</label>
+        <input type="text" id="role" name="role" value="{{ user[3] if user else '' }}"required>
+    </div>
+
+        <label for="is_active">Active:</label>
+        <input type="checkbox" id="is_active" name="is_active" {% if user and user[4] %}checked{% endif %}>
+    </div>
+    <button type="submit">{% if user %}Update{% else %}Add{% endif %} Member</button>
+</form>
+{% endblock %}

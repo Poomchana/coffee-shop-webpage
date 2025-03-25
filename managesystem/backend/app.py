@@ -11,8 +11,12 @@ from backend.auth_utils import login_required
 
 
 
-app = Flask(__name__, template_folder='../frontend/managesystem')
+app = Flask(__name__, template_folder='../frontend')
 app.secret_key = os.urandom(24)  # ใช้ค่า secret_key ที่ปลอดภัย
+
+@app.route('/')
+def home():
+    return render_template('/store/index.html')
 
 # ตั้งค่า Flask-Login
 login_manager = LoginManager()
@@ -27,6 +31,7 @@ from backend.discounts import discounts_bp
 from backend.promotions import promotions_bp
 from backend.sales import sales_bp
 from backend.members import members_bp
+from backend.manage_profile import users_bp
 
 app.register_blueprint(auth_bp)
 app.register_blueprint(inventory_bp)
@@ -35,11 +40,14 @@ app.register_blueprint(discounts_bp)
 app.register_blueprint(promotions_bp)
 app.register_blueprint(sales_bp)
 app.register_blueprint(members_bp)
+app.register_blueprint(users_bp)
 
 @app.route('/admin')
 @login_required
-def home():
-    return render_template('dashboard.html')
+def admin():
+    return render_template('/admin/dashboard.html')
+
+
 
 # ฟังก์ชันสำหรับโหลดผู้ใช้
 @login_manager.user_loader

@@ -3,7 +3,7 @@ from backend.database import create_connection
 from backend.auth_utils import login_required
 from sqlite3 import Error
 
-promotions_bp = Blueprint('promotions', __name__, template_folder='../frontend/managesystem')
+promotions_bp = Blueprint('promotions', __name__, template_folder='../frontend/admin')
 
 @promotions_bp.route('/admin/promotions')
 @login_required

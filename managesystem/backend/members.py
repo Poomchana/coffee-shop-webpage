@@ -4,7 +4,7 @@ from backend.auth_utils import login_required
 from datetime import datetime
 from sqlite3 import Error
 
-members_bp = Blueprint('members', __name__, template_folder='../frontend/managesystem')
+members_bp = Blueprint('members', __name__, template_folder='../frontend/admin')
 
 @members_bp.route('/admin/members', methods=['GET', 'POST'])
 @login_required

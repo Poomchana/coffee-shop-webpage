@@ -3,7 +3,7 @@ from backend.database import create_connection
 from backend.auth_utils import login_required
 from sqlite3 import Error
 
-menu_bp = Blueprint('menu', __name__, template_folder='../frontend/managesystem')
+menu_bp = Blueprint('menu', __name__, template_folder='../frontend/admin')
 
 @menu_bp.route('/admin/menu', methods=['GET', 'POST'])
 @login_required

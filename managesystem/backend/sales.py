@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request
 from backend.database import create_connection
 from datetime import datetime
 
-sales_bp = Blueprint('sales', __name__  , template_folder='../frontend/managesystem')
+sales_bp = Blueprint('sales', __name__  , template_folder='../frontend/admin')
 
 @sales_bp.route('/admin/sales')
 def view_sales():

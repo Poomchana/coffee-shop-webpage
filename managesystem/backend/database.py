@@ -21,7 +21,7 @@ def initialize_database():
                          (id INTEGER PRIMARY KEY AUTOINCREMENT,
                          username TEXT UNIQUE NOT NULL,
                          password TEXT NOT NULL,
-                         role TEXT NOT NULL)''')
+                         role TEXT NOT NULL,is_active BOOLEAN DEFAULT 1)''')
             
             # Inventory table
             c.execute('''CREATE TABLE IF NOT EXISTS inventory

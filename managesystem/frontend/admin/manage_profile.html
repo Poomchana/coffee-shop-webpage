@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Manage User</h1>
+<a href="{{ url_for('users.add_profile') }}">Add New Item</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>password</th>
+            <th>role</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in user %}
+        <tr>
+            <td>{{ user[0] }}</td>
+            <td>{{ user[1] }}</td>
+            <td>{{ user[2] }}</td>
+            <td>{{ user[3] }}</td>
+            <td>{{ 'Yes' if user[4] else 'No' }}</td>
+            <td>
+                <a href="{{ url_for('users.edit_profile', user_id=user[0]) }}">Edit</a>
+                <a href="{{ url_for('users.delete_profile', user_id=user[0]) }}" onclick="return confirm('Are you sure?')">Delete</a>                
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
