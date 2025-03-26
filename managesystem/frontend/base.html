@@ -22,9 +22,9 @@
 </head>
 <body>
     <nav>
-        {% if 'username' in session %}
-            <span>ยินดีต้อนรับ {{ session['username'] }}</span>
-            <a href="{{ url_for('admin') }}">หน้าหลัก</a>
+        {% if current_user.is_authenticated %}
+
+            <a href="{{ url_for('admin_dashboard') }}">หน้าหลัก</a>
             <a href="{{ url_for('inventory.view_inventory') }}">สต็อกสินค้า</a>
             <a href="{{ url_for('menu.view_menu') }}">จัดการเมนู</a>
             <a href="{{url_for('discounts.view_discounts')}}">จัดการส่วนลด</a>

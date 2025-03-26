@@ -3,7 +3,7 @@ from backend.database import create_connection
 from backend.auth_utils import admin_login_required
 from sqlite3 import Error
 
-users_bp = Blueprint('users', __name__, template_folder='../frontend/admin')
+users_bp = Blueprint('users', __name__, template_folder='../frontend')
 
 # ดึงข้อมูลโปรไฟล์ทั้งหมด
 @users_bp.route('/admin/profile')

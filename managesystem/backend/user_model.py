@@ -5,3 +5,6 @@ class User(UserMixin):
         self.id = id
         self.username = username
         self.role = role
+
+    def get_id(self):
+        return str(self.id)

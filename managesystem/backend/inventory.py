@@ -3,7 +3,7 @@ from backend.database import create_connection
 from backend.auth_utils import admin_login_required
 from sqlite3 import Error
 
-inventory_bp = Blueprint('inventory', __name__, template_folder='../frontend/admin')
+inventory_bp = Blueprint('inventory', __name__, template_folder='../frontend')
 
 @inventory_bp.route('/admin/inventory')
 @admin_login_required
