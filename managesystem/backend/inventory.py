@@ -29,13 +29,18 @@ def add_inventory():
         quantity = request.form['quantity']
         unit = request.form['unit']
         threshold = request.form.get('threshold', 0)
+        branches = request.form.get('branches')
+        
+        # Check if branches is provided or set to empty string if not
+        if not branches:
+            branches = ''
         
         conn = create_connection()
         if conn is not None:
             try:
                 c = conn.cursor()
-                c.execute("INSERT INTO inventory (name, quantity, unit, threshold) VALUES (?, ?, ?, ?)",
-                         (name, quantity, unit, threshold))
+                c.execute("INSERT INTO inventory (name, quantity, unit, threshold, branches) VALUES (?, ?, ?, ?, ?) ",
+                         (name, quantity, unit, threshold, branches))
                 conn.commit()
                 flash('Inventory item added successfully!', 'success')
                 return redirect(url_for('inventory.view_inventory'))
@@ -58,9 +63,14 @@ def edit_inventory(item_id):
                 quantity = request.form['quantity']
                 unit = request.form['unit']
                 threshold = request.form.get('threshold', 0)
+                branches = request.form.get('branches')
                 
-                c.execute("UPDATE inventory SET name=?, quantity=?, unit=?, threshold=? WHERE id=?", 
-                         (name, quantity, unit, threshold, item_id))
+                # Ensure branches is provided or set to empty string if not
+                if not branches:
+                    branches = ''
+                
+                c.execute("UPDATE inventory SET name=?, quantity=?, unit=?, threshold=?, branches=? WHERE id=?", 
+                         (name, quantity, unit, threshold, branches, item_id))
                 conn.commit()
                 flash('Inventory item updated successfully!', 'success')
                 return redirect(url_for('inventory.view_inventory'))
