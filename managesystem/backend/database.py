@@ -25,13 +25,12 @@ def initialize_database():
             
             # Inventory table
             c.execute('''CREATE TABLE IF NOT EXISTS inventory
-                         (id INTEGER PRIMARY KEY AUTOINCREMENT,
-                         
+                          (id INTEGER PRIMARY KEY AUTOINCREMENT,
                          name TEXT NOT NULL,
+                         branches TEXT NOT NULL,
                          quantity INTEGER NOT NULL,
-                         unit TEXT NOT NULL,
                          threshold INTEGER,
-                         branches TEXT NOT NULL)''')
+                         unit TEXT NOT NULL)''')
             
             # Menu items table
             c.execute('''CREATE TABLE IF NOT EXISTS menu_items
