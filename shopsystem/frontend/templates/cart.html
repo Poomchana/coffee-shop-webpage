@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Cart</title>
+</head>
+<body>
+    <h2>Your Cart</h2>
+    <ul>
+        {% for item in items %}
+        <li>{{ item[0] }} - ${{ item[1] }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('checkout') }}">Proceed to Checkout</a>
+</body>
+</html>

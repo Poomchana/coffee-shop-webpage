@@ -79,6 +79,11 @@ def initialize_database():
                          join_date TEXT NOT NULL,
                          is_active BOOLEAN DEFAULT 1)''')
             
+            c.execute('''CREATE TABLE IF NOT EXISTS cart
+                         (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                          item_id INTEGER NOT NULL,
+                          FOREIGN KEY (item_id) REFERENCES menu_items(id))''')
+                          
             # Insert admin user if not exists
             c.execute("INSERT OR IGNORE INTO users (username, password, role) VALUES (?, ?, ?)",
                      ('admin', 'admin123', 'admin'))

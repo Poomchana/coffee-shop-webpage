@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+</head>
+<body>
+    <h2>Menu</h2>
+    <ul>
+        {% for item in items %}
+        <li>
+            <p>{{ item[1] }} - ${{ item[3] }}</p>
+            <form action="{{ url_for('add_to_cart_route', item_id=item[0]) }}" method="POST">
+                <button type="submit">Add to Cart</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
