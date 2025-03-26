@@ -1,12 +1,12 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, session
 from backend.database import create_connection
-from backend.auth_utils import login_required
+from backend.auth_utils import admin_login_required
 from sqlite3 import Error
 
 menu_bp = Blueprint('menu', __name__, template_folder='../frontend/admin')
 
 @menu_bp.route('/admin/menu', methods=['GET', 'POST'])
-@login_required
+@admin_login_required
 def view_menu():
     search_query = request.form.get('search', '')
 
@@ -28,7 +28,7 @@ def view_menu():
     return render_template('menu.html', items=items)
 
 @menu_bp.route('/admin/add_menu_item', methods=['GET', 'POST'])
-@login_required
+@admin_login_required
 def add_menu_item():
     if request.method == 'POST':
         name = request.form['name']
@@ -53,7 +53,7 @@ def add_menu_item():
     return render_template('edit_menu.html', item=None)
 
 @menu_bp.route('/admin/edit_menu_item/<int:item_id>', methods=['GET', 'POST'])
-@login_required
+@admin_login_required
 def edit_menu_item(item_id):
     conn = create_connection()
     if conn:
@@ -85,7 +85,7 @@ def edit_menu_item(item_id):
     return redirect(url_for('menu.view_menu'))
 
 @menu_bp.route('/admin/delete_menu_item/<int:item_id>')
-@login_required
+@admin_login_required
 def delete_menu_item(item_id):
     conn = create_connection()
     if conn:

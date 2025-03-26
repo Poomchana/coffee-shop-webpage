@@ -1,12 +1,12 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from backend.database import create_connection
-from backend.auth_utils import login_required
+from backend.auth_utils import admin_login_required
 from sqlite3 import Error
 
 promotions_bp = Blueprint('promotions', __name__, template_folder='../frontend/admin')
 
 @promotions_bp.route('/admin/promotions')
-@login_required
+@admin_login_required
 def view_promotions():
     conn = create_connection()
     promotions = []
@@ -22,7 +22,7 @@ def view_promotions():
     return render_template('promotions.html', promotions=promotions)
 
 @promotions_bp.route('/admin/add_promotion', methods=['GET', 'POST'])
-@login_required
+@admin_login_required
 def add_promotion():
     if request.method == 'POST':
         name = request.form['name']
@@ -56,7 +56,7 @@ def add_promotion():
     return render_template('edit_promotion.html', promotion=None)
 
 @promotions_bp.route('/admin/edit_promotion/<int:promotion_id>', methods=['GET', 'POST'])
-@login_required
+@admin_login_required
 def edit_promotion(promotion_id):
     conn = create_connection()
     if conn:
@@ -95,7 +95,7 @@ def edit_promotion(promotion_id):
     return redirect(url_for('promotions.view_promotions'))
 
 @promotions_bp.route('/admin/delete_promotion/<int:promotion_id>')
-@login_required
+@admin_login_required
 def delete_promotion(promotion_id):
     conn = create_connection()
     if conn:

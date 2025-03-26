@@ -1,13 +1,13 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, session
 from backend.database import create_connection
-from backend.auth_utils import login_required
+from backend.auth_utils import admin_login_required
 from datetime import datetime
 from sqlite3 import Error
 
 members_bp = Blueprint('members', __name__, template_folder='../frontend/admin')
 
 @members_bp.route('/admin/members', methods=['GET', 'POST'])
-@login_required
+@admin_login_required
 def view_members():
     search_query = request.form.get('search', '')
 
@@ -29,7 +29,7 @@ def view_members():
     return render_template('members.html', members=members)
 
 @members_bp.route('/admin/add_member', methods=['GET', 'POST'])
-@login_required
+@admin_login_required
 def add_member():
     if request.method == 'POST':
         name = request.form['name']
@@ -54,7 +54,7 @@ def add_member():
     return render_template('edit_member.html', member=None)
 
 @members_bp.route('/admin/edit_member/<int:member_id>', methods=['GET', 'POST'])
-@login_required
+@admin_login_required
 def edit_member(member_id):
     conn = create_connection()
     if conn:
@@ -86,7 +86,7 @@ def edit_member(member_id):
     return redirect(url_for('members.view_members'))
 
 @members_bp.route('/admin/delete_member/<int:member_id>')
-@login_required
+@admin_login_required
 def delete_member(member_id):
     conn = create_connection()
     if conn:

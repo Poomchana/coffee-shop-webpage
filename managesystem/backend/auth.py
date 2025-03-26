@@ -1,29 +1,29 @@
 from flask import Blueprint, render_template, redirect, url_for, session, request, flash
+from werkzeug.security import check_password_hash
 from sqlite3 import Error
 from backend.database import create_connection
-from backend.auth_utils import admin_login_required
 
-admin_auth_bp = Blueprint('auth_admin', __name__, template_folder='../frontend/admin')
+auth_bp = Blueprint('auth', __name__, template_folder='../frontend/store')
 
-@admin_auth_bp.route('/admin/login', methods=['GET', 'POST'])
+@auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+        username = request.form.get('username', '').strip()
+        password = request.form.get('password', '').strip()
         
+        if not username or not password:
+            flash('กรุณากรอกชื่อผู้ใช้และรหัสผ่าน', 'warning')
+            return redirect(url_for('auth.login'))
+
         conn = create_connection()
         if conn is not None:
             try:
-                c = conn.cursor()
-                c.execute("SELECT * FROM users WHERE username = ? AND password = ?", (username, password))
-                user = c.fetchone()
+                with conn:  
+                    c = conn.cursor()
+                    c.execute("SELECT id, username, password, role FROM users WHERE username = ?", (username,))
+                    user = c.fetchone()
                 
                 if user:
-                    # ตรวจสอบว่า role เป็น admin หรือไม่
-                    if user[3] != 'admin':
-                        flash('อนุญาตให้เฉพาะผู้ดูแลระบบ (Admin) เท่านั้นเข้าสู่ระบบ', 'danger')
-                        return redirect(url_for('auth.login'))
-                    
                     # หากเป็น admin ให้เข้าสู่ระบบ
                     session['username'] = user[1]
                     session['role'] = user[3]
@@ -39,8 +39,7 @@ def login():
     
     return render_template('login.html')
 
-@admin_auth_bp.route('/admin/logout')
-@admin_login_required
+@auth_bp.route('/logout')
 def logout():
     session.clear()
     flash('คุณได้ออกจากระบบแล้ว', 'info')

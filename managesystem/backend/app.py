@@ -5,7 +5,8 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from flask import Flask, render_template, redirect, url_for, request
 from flask_login import LoginManager, login_required
 from backend.user_model import User
-from backend.auth_utils import login_required
+from backend.auth_utils import admin_login_required 
+from backend.auth_utils import shop_login_required
 
 
 
@@ -14,7 +15,11 @@ from backend.auth_utils import login_required
 app = Flask(__name__, template_folder='../frontend')
 app.secret_key = os.urandom(24)  # ใช้ค่า secret_key ที่ปลอดภัย
 
+from backend.auth import auth_bp
+app.register_blueprint(auth_bp)
+
 @app.route('/')
+@shop_login_required
 def home():
     return render_template('/store/index.html')
 
@@ -24,7 +29,7 @@ login_manager.init_app(app)
 login_manager.login_view = 'auth.login'
 
 # Import และลงทะเบียน Blueprints
-from backend.auth_admin import auth_bp
+from backend.auth_admin import admin_auth_bp
 from backend.inventory import inventory_bp
 from backend.menu import menu_bp
 from backend.discounts import discounts_bp
@@ -33,7 +38,7 @@ from backend.sales import sales_bp
 from backend.members import members_bp
 from backend.manage_profile import users_bp
 
-app.register_blueprint(auth_bp)
+app.register_blueprint(admin_auth_bp)
 app.register_blueprint(inventory_bp)
 app.register_blueprint(menu_bp)
 app.register_blueprint(discounts_bp)
@@ -43,10 +48,9 @@ app.register_blueprint(members_bp)
 app.register_blueprint(users_bp)
 
 @app.route('/admin')
-@login_required
+@admin_login_required
 def admin():
     return render_template('/admin/dashboard.html')
-
 
 
 # ฟังก์ชันสำหรับโหลดผู้ใช้
