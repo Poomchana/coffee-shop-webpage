@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-import sqlite3
-from utils import get_user_by_username, get_all_menu_items, add_to_cart, get_cart, get_sales_history
+from utils import get_user_by_username, get_all_menu_items, add_to_cart, get_cart, get_sales_history, remove_from_cart, checkout, calculate_cart_total
 
 app = Flask(__name__, template_folder='../frontend/templates')
 app.secret_key = 'your_secret_key'
@@ -24,6 +23,7 @@ def login():
             return "Invalid login credentials", 401
     return render_template('login.html')
 
+
 @app.route('/home')
 def home():
     return render_template('home.html')
@@ -40,18 +40,31 @@ def add_to_cart_route(item_id):
     add_to_cart(item_id)
     return redirect(url_for('cart'))
 
+@app.route('/remove_from_cart/<item_id>', methods=['POST'])
+def remove_from_cart(item_id):
+    remove_from_cart(item_id)  # Remove item from cart
+    return redirect(url_for('cart'))  # Redirect back to the cart
 
-@app.route('/cart')
+
+@app.route('/cart', methods=['GET', 'POST'])
 def cart():
+    if request.method == 'POST':
+        item_id_to_remove = request.form['remove_item']
+        remove_from_cart(item_id_to_remove)  # Remove item from cart
+        return redirect(url_for('cart'))  # Refresh the cart page
+
     items = get_cart()
-    return render_template('cart.html', items=items)
+    total = calculate_cart_total()
+    return render_template('cart.html', items=items, total=total)
 
 
 @app.route('/checkout', methods=['GET', 'POST'])
-def checkout():
+def checkout_page():
     if request.method == 'POST':
-        # Handle payment processing here
-        return redirect(url_for('sales_history'))
+        payment_method = request.form['payment_method']  # Get payment method from form
+        sale_id = checkout(payment_method)  # Process the checkout and clear the cart
+        return redirect(url_for('sales_history'))  # Redirect to the sales history page or any success page
+    
     return render_template('checkout.html')
 
 
