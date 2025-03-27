@@ -148,8 +148,8 @@
         }
         .account img{
             object-fit: contain; /* ใช้ object-fit: contain; เพื่อรักษาอัตราส่วน */
-            max-width: 50px; /* กำหนดขนาดสูงสุด */
-            max-height: 50px; /* กำหนดขนาดสูงสุด */
+            max-width: 80px; /* กำหนดขนาดสูงสุด */
+            max-height: 80px; /* กำหนดขนาดสูงสุด */
         }
     </style>
 </head>
@@ -164,6 +164,7 @@
                 <li><a href="#" class="menu-item">ABOUT US</a></li>
                 <li><a href="#" class="menu-item">FAQ</a></li>
             </ul>
+            
         </nav>
         <div class="account">
             <img src="Image/account2.webp" alt="Account">
