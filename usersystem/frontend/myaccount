@@ -169,8 +169,8 @@ main {
         }
         .account img{
             object-fit: contain; /* ใช้ object-fit: contain; เพื่อรักษาอัตราส่วน */
-            max-width: 50px; /* กำหนดขนาดสูงสุด */
-            max-height: 50px; /* กำหนดขนาดสูงสุด */
+            max-width: 80px; /* กำหนดขนาดสูงสุด */
+            max-height: 80px; /* กำหนดขนาดสูงสุด */
         }
         
     </style>
