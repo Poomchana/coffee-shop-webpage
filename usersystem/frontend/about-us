@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop - About Us</title>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #40a168;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2em;
+            font-weight: bold;
+            color: white;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            background-color: #368a58;
+        }
+
+        .account {
+            position: relative;
+        }
+
+        .account img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .account img:hover {
+            transform: scale(1.1);
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 40px;
+        }
+
+        .store-info {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .store-info img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .store-details {
+            font-size: 1.2em;
+            text-align: left;
+        }
+
+        .contact-details {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+            text-align: left;
+            font-size: 1.2em;
+        }
+
+        .contact-details h3, .store-details h3 {
+            color: #40a168;
+            margin-bottom: 15px;
+        }
+
+        .contact-details p, .store-details p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">☕ Coffee Shop</div>
+        <nav>
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">MENU</a></li>
+                <li><a href="#">Track status</a></li>
+                <li><a href="#" class="active">ABOUT US</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+        </nav>
+        <div class="account">
+            <img src="Image/account2.webp" alt="Account">
+        </div>
+    </header>
+    <main>
+        <section class="store-info">
+            <div>
+                <h3>ที่ตั้งร้าน</h3>
+                <img src="Image/location.png" alt="ร้านค้า">
+            </div>
+            <div class="store-details">
+                <h4><strong>ตั้งอยู่</strong></h4>
+                <p>...................................</p>
+                <p>...................................</p>
+            </div>
+        </section>
+        <section class="contact-details">
+            <h3>ติดต่อ</h3>
+            <p><strong>Facebook:</strong> ........</p>
+            <p><strong>Instagram:</strong> ........</p>
+            <p><strong>Line@:</strong> ...........</p>
+            <p><strong>Tel:</strong> ..............</p>
+        </section>
+    </main>
+</body>
+</html>
