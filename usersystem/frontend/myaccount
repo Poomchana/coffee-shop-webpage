@@ -3,129 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coffee Shop - Sign In</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Coffee Shop - My Account</title>
     <style>
         body {
-            background-color: #FAEBD7;
-            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
+            color: #333;
         }
-        .logo {
-            font-size: 2em;
-            padding: 5px 10px;
-            /* เอา border ออก */
-            border-radius: 10px;
-            margin: 20px 0;
-            display: inline-block;
-            color: #ffffff;
-        }
+
         header {
             background-color: #40a168;
-            padding: 0px;
             color: white;
-        }
-        form {
+            padding: 20px;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
         }
-        form input {
-            display: block;
-            width: 80%;
-            margin: 10px 0;
-            padding: 8px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+
+        .logo {
+            font-size: 2em;
+            font-weight: bold;
+            color: white;
         }
-        button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            border-radius: 5px;
-            border: none;
-            background-color: #ffffff;
-            color: rgb(2, 2, 2);
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #d6d6d6;
-        }
-        nav {
-            background-color: #D2B48C;
-            padding: 0px;
-            padding: 15px;
-        }
+
         nav ul {
             list-style: none;
-            margin: 0;
-            padding: 0;
             display: flex;
+            padding: 0;
+            margin: 0;
         }
-        nav > ul > li {
-            margin: 0 10px;
-        }
-        .menu-item {
-            color: rgb(0, 0, 0);
-            text-decoration: none;
-            padding: 5px 10px;
-        }
-        .menu-item:hover {
-            background-color: #dfdbdb;
-            border-radius: 3px;
-        }
-        #active {
-            background-color: #d6d6d6;
-            border-radius: 3px;
-        }
-        .auth {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
-        .auth a {
-            color: #ffffff;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        .auth a:hover {
-            color: #d8d5d5;
-        }
-       
-        
-        .social-login button img {
-    width: 25px; 
-    height: 25px; 
-    object-fit: cover; 
-}
 
-main {
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            background-color: #368a58;
+        }
+
+        .account {
+            position: relative;
+        }
+
+        .account img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .account img:hover {
+            transform: scale(1.1);
+        }
+
+        main {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 40px;
         }
 
         .account-container {
-            background-color: #c8d9b2;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 80%;
             max-width: 800px;
         }
 
         .account-header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .account-header h2 {
+            color: #40a168;
             margin: 0;
+            font-size: 2em;
         }
 
         .account-header p {
-            margin: 5px 0 0;
+            color: #666;
+            margin: 10px 0 0;
         }
 
         .account-menu {
@@ -133,46 +105,42 @@ main {
             justify-content: center;
             flex-wrap: wrap;
         }
-        .account-menu .menu-item:last-child p {
-    color: red;
-
-}
 
         .menu-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: #688451;
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
-            width: 150px;
-            margin: 10px; /* เพิ่ม margin */
+            background-color: #e0f2e7;
+            color: #40a168;
+            padding: 20px;
+            border-radius: 10px;
+            width: 180px;
+            margin: 15px;
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
         .menu-item img {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 10px;
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+            object-fit: contain;
         }
 
-        .social-login button img {
-            width: 25px;
-            height: 25px;
-            object-fit: cover;
+        .menu-item p {
+            margin: 0;
+            font-weight: 500;
         }
-        .account {
-          position: absolute;
-          top: 10px;
-          right: 10px;
+
+        .account-menu .menu-item:last-child p {
+            color: red;
         }
-        .account img{
-            object-fit: contain; /* ใช้ object-fit: contain; เพื่อรักษาอัตราส่วน */
-            max-width: 80px; /* กำหนดขนาดสูงสุด */
-            max-height: 80px; /* กำหนดขนาดสูงสุด */
-        }
-        
     </style>
 </head>
 <body>
@@ -180,13 +148,12 @@ main {
         <div class="logo">☕ Coffee Shop</div>
         <nav>
             <ul>
-                <li><a href="#" class="menu-item">HOME</a></li>
-                <li><a href="#" class="menu-item">MENU</a></li>
-                <li><a href="#" class="menu-item">Track status</a></li>
-                <li><a href="#" class="menu-item">ABOUT US</a></li>
-                <li><a href="#" class="menu-item">FAQ</a></li>
+                <li><a href="#" class="active">HOME</a></li>
+                <li><a href="#">MENU</a></li>
+                <li><a href="#">Track status</a></li>
+                <li><a href="#">ABOUT US</a></li>
+                <li><a href="#">FAQ</a></li>
             </ul>
-            
         </nav>
         <div class="account">
             <img src="Image/account2.webp" alt="Account">
