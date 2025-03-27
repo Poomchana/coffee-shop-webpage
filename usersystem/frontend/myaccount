@@ -162,7 +162,6 @@ main {
             height: 25px;
             object-fit: cover;
         }
-
         .account {
           position: absolute;
           top: 10px;
@@ -173,6 +172,7 @@ main {
             max-width: 50px; /* กำหนดขนาดสูงสุด */
             max-height: 50px; /* กำหนดขนาดสูงสุด */
         }
+        
     </style>
 </head>
 <body>
@@ -186,6 +186,7 @@ main {
                 <li><a href="#" class="menu-item">ABOUT US</a></li>
                 <li><a href="#" class="menu-item">FAQ</a></li>
             </ul>
+            
         </nav>
         <div class="account">
             <img src="Image/account2.webp" alt="Account">
