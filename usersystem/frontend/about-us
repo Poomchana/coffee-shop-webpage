@@ -3,138 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coffee Shop - FAQ</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Coffee Shop - About Us</title>
     <style>
-         body {
-            background-color: #FAEBD7;
-            font-family: Arial, sans-serif;
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
+            color: #333;
         }
-        .logo {
-            font-size: 2em;
-            padding: 5px 10px;
-            /* เอา border ออก */
-            border-radius: 10px;
-            margin: 20px 0;
-            display: inline-block;
-            color: #ffffff;
-        }
+
         header {
             background-color: #40a168;
-            padding: 0px;
             color: white;
-        }
-        .form-container {
-            text-align: center;
-            background-color: #40a168;
             padding: 20px;
-            border-radius: 10px;
-            width: 50%;
-            margin: 20px auto;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-        }
-        form {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
         }
-        form input {
-            display: block;
-            width: 80%;
-            margin: 10px 0;
-            padding: 8px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+
+        .logo {
+            font-size: 2em;
+            font-weight: bold;
+            color: white;
         }
-        button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            border-radius: 5px;
-            border: none;
-            background-color: #ffffff;
-            color: rgb(2, 2, 2);
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #ffffff;
-        }
-        nav {
-            background-color: #D2B48C;
-            padding: 15px;
-        }
+
         nav ul {
             list-style: none;
-            margin: 0;
-            padding: 0;
             display: flex;
+            padding: 0;
+            margin: 0;
         }
-        nav > ul > li {
-            margin: 0 10px;
+
+        nav ul li {
+            margin-left: 20px;
         }
-        .menu-item {
-            color: rgb(0, 0, 0);
+
+        nav ul li a {
+            color: white;
             text-decoration: none;
-            padding: 5px 10px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
-        .menu-item:hover {
-            background-color: #ffffff;
-            border-radius: 3px;
+
+        nav ul li a:hover, nav ul li a.active {
+            background-color: #368a58;
         }
-        #active {
-            background-color: #ffffff;
-            border-radius: 3px;
+
+        .account {
+            position: relative;
         }
-        .auth {
-            position: absolute;
-            top: 20px;
-            right: 20px;
+
+        .account img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
-        .auth a {
-            color: #ffffff;
-            text-decoration: none;
-            margin: 0 10px;
+
+        .account img:hover {
+            transform: scale(1.1);
         }
-        .auth a:hover {
-            color: #d8d5d5;
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 40px;
         }
+
         .store-info {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
             display: flex;
             justify-content: space-around;
             align-items: center;
-            background-color: #F5F5DC;
-            padding: 20px;
-            margin: 20px auto;
-            width: 80%;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
         }
+
         .store-info img {
             width: 200px;
             height: 150px;
-            background-color: #ccc;
-            display: block;
+            object-fit: cover;
             border-radius: 10px;
         }
-        .store-details, .contact-details {
-            font-family: sans-serif;
-            font-size: 1.5rem;
-            color: #3e3e3e;
+
+        .store-details {
+            font-size: 1.2em;
+            text-align: left;
         }
+
         .contact-details {
-           
-            margin-top: 20px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+            text-align: left;
+            font-size: 1.2em;
         }
-        .account {
-          position: absolute;
-          top: 10px;
-          right: 10px;
+
+        .contact-details h3, .store-details h3 {
+            color: #40a168;
+            margin-bottom: 15px;
         }
-        .account img{
-            object-fit: contain; /* ใช้ object-fit: contain; เพื่อรักษาอัตราส่วน */
-            max-width: 80px; /* กำหนดขนาดสูงสุด */
-            max-height: 80px; /* กำหนดขนาดสูงสุด */
+
+        .contact-details p, .store-details p {
+            line-height: 1.6;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -143,36 +128,36 @@
         <div class="logo">☕ Coffee Shop</div>
         <nav>
             <ul>
-                <li><a href="#" class="menu-item">HOME</a></li>
-                <li><a href="#" class="menu-item">MENU</a></li>
-                <li><a href="#" class="menu-item">Track Status</a></li>
-                <li><a href="#" class="menu-item" id="active">ABOUT US</a></li>
-                <li><a href="#" class="menu-item">FAQ</a></li>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">MENU</a></li>
+                <li><a href="#">Track status</a></li>
+                <li><a href="#" class="active">ABOUT US</a></li>
+                <li><a href="#">FAQ</a></li>
             </ul>
         </nav>
         <div class="account">
             <img src="Image/account2.webp" alt="Account">
         </div>
     </header>
-</article>
-<section class="store-info">
-    <div>
-        <h3>ที่ตั้งร้าน</h3>
-        <img src="Image/location.png" alt="ร้านค้า">
-    </div>
-    <div class="store-details">
-        <h4><strong>ตั้งอยู่</strong></h4>
-        <p>...................................</p>
-        <p>...................................</p>
-    </div>
-</section>
-<section class="contact-details">
-    <h3>ติดต่อ</h3>
-    <p><strong>Facebook:</strong> ........</p>
-    <p><strong>Instagram:</strong> ........</p>
-    <p><strong>Line@:</strong> ...........</p>
-    <p><strong>Tel:</strong> ..............</p>
-</section>
-</main>
+    <main>
+        <section class="store-info">
+            <div>
+                <h3>ที่ตั้งร้าน</h3>
+                <img src="Image/location.png" alt="ร้านค้า">
+            </div>
+            <div class="store-details">
+                <h4><strong>ตั้งอยู่</strong></h4>
+                <p>...................................</p>
+                <p>...................................</p>
+            </div>
+        </section>
+        <section class="contact-details">
+            <h3>ติดต่อ</h3>
+            <p><strong>Facebook:</strong> ........</p>
+            <p><strong>Instagram:</strong> ........</p>
+            <p><strong>Line@:</strong> ...........</p>
+            <p><strong>Tel:</strong> ..............</p>
+        </section>
+    </main>
 </body>
 </html>
