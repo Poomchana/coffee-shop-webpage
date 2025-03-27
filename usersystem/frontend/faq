@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop - FAQ</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #FAEBD7;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .logo {
+            font-size: 2em;
+            padding: 5px 10px;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: inline-block;
+            color: #ffffff;
+        }
+        header {
+            background-color: #40a168;
+            padding: 0px;
+            color: white;
+        }
+        .form-container {
+            text-align: center;
+            background-color: #40a168;
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            margin: 20px auto;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        form input {
+            display: block;
+            width: 80%;
+            margin: 10px 0;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #ffffff;
+            color: rgb(2, 2, 2);
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ffffff;
+        }
+        nav {
+            background-color: #D2B48C;
+            padding: 15px;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav > ul > li {
+            margin: 0 10px;
+        }
+        .menu-item {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+        .menu-item:hover {
+            background-color: #ffffff;
+            border-radius: 3px;
+        }
+        #active {
+            background-color: #ffffff;
+            border-radius: 3px;
+        }
+        .auth {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .auth a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .auth a:hover {
+            color: #d8d5d5;
+        }
+        .blog-post {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            font-family: 'Sarabun', sans-serif;
+        }
+        .post-title {
+            text-align: center;
+            font-family: 'Angsana New';
+            font-weight: bold;
+            font-size: 3rem;
+            color: #40a168;
+            margin-bottom: 1rem;
+        }
+        .post-content {
+            font-family: 'Angsana New';
+            font-size: 1.5rem;
+            color: #40a168;
+            text-align: left; /* เพิ่ม text-align: left; */
+        }
+        .post-content p {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">☕ Coffee Shop</div>
+        <nav>
+            <ul>
+                <li><a href="#" class="menu-item">HOME</a></li>
+                <li><a href="#" class="menu-item">MENU</a></li>
+                <li><a href="#" class="menu-item">Track Status</a></li>
+                <li><a href="#" class="menu-item">ABOUT US</a></li>
+                <li><a href="#" class="menu-item" id="active">FAQ</a></li>
+            </ul>
+        </nav>
+        <div class="auth">
+            <a href="#">Login</a> | <a href="#">Sign in</a>
+        </div>
+    </header>
+    <main>
+        <article class="blog-post">
+            <h1 class="post-title">คำถามที่พบบ่อย</h1>
+            <div class="post-content">
+                <h2>การสั่งซื้อ</h2>
+                <p><strong>1. ฉันสามารถสั่งซื้อได้ทางไหนบ้าง?</strong></p>
+                <p>- คุณสามารถสั่งซื้อสินค้าได้ผ่านเว็บไซต์ของเรา, แอปพลิเคชัน, หรือสั่งซื้อโดยตรงที่ร้าน</p>
+                <p><strong>2. ใช้เวลากี่วันในการจัดส่ง?</strong></p>
+                <p>- ระยะเวลาการจัดส่งขึ้นอยู่กับพื้นที่ โดยปกติจะใช้เวลา 30-60 นาที</p>
+                <p><strong>3. มีบริการชำระเงินแบบไหนบ้าง?</strong></p>
+                <p>- เรารองรับการชำระเงินผ่าน:</p>
+                <ul>
+                    <li>บัตรเครดิต/เดบิต</li>
+                    <li>โอนผ่านธนาคาร</li>
+                    <li>ชำระเงินปลายทาง</li>
+                    <li>สแกนจ่าย</li>
+                </ul>
+                <p><strong>4. ฉันสามารถเปลี่ยนหรือยกเลิกคำสั่งซื้อได้หรือไม่?</strong></p>
+                <p>- หากคำสั่งซื้อยังไม่ถูกจัดส่ง คุณสามารถติดต่อทีมงานเพื่อเปลี่ยนแปลงได้ที่ 089-XXX-XXX</p>
+                <hr>
+                <h3>การสะสมแต้ม</h3>
+                <p><strong>1. ฉันจะได้รับแต้มสะสมอย่างไร ?</strong></p>
+                <p>- ทุกการซื้อสินค้า 1 ชิ้น = 2 แต้ม แต้มสะสมสามารถใช้แลกเป็นส่วนลดหรือรางวัลพิเศษ</p>
+                <p><strong>2. แต้มสะสมมีวันหมดอายุหรือไม่ ?</strong></p>
+                <p>- แต้มสะสมมีอายุ 1 ปีนับจากวันที่ได้รับ</p>
+                <p><strong>3. ฉันสามารถตรวจสอบแต้มสะสมของฉันได้ที่ไหน ?</strong></p>
+                <p>- คุณสามารถเช็คแต้มสะสมได้ที่ บัญชีของฉัน ในเว็บไซต์หรือแอปพลิเคชัน หรือสอบถามทางร้าน</p>
+                <p><strong>4. ฉันสามารถโอนแต้มให้ผู้อื่นได้ไหม ?</strong></p>
+                <p>- ขออภัยครับ แต้มสะสมไม่สามารถโอนไปยังบัญชีผู้อื่นได้ </p>
+            </div>
+        </article>
+    </main>
+</body>
+</html>
