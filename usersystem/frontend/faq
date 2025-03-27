@@ -121,6 +121,16 @@
         .post-content p {
             margin-bottom: 5px;
         }
+        .account {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+        }
+        .account img{
+            object-fit: contain; /* ใช้ object-fit: contain; เพื่อรักษาอัตราส่วน */
+            max-width: 80px; /* กำหนดขนาดสูงสุด */
+            max-height: 80px; /* กำหนดขนาดสูงสุด */
+        }
     </style>
 </head>
 <body>
@@ -135,8 +145,8 @@
                 <li><a href="#" class="menu-item" id="active">FAQ</a></li>
             </ul>
         </nav>
-        <div class="auth">
-            <a href="#">Login</a> | <a href="#">Sign in</a>
+        <div class="account">
+            <img src="Image/account2.webp" alt="Account">
         </div>
     </header>
     <main>
