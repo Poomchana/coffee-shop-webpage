@@ -16,12 +16,15 @@ def login():
         username = request.form['username']
         password = request.form['password']
         user = get_user_by_username(username)
-        if user and user['password'] == password:
-            session['user_id'] = user['id']
+
+        # Access user tuple by index instead of using keys
+        if user and user[2] == password:  # user[2] corresponds to password (based on your database schema)
+            session['user_id'] = user[0]  # user[0] corresponds to the ID
             return redirect(url_for('home'))
         else:
             return "Invalid login credentials", 401
     return render_template('login.html')
+
 
 
 @app.route('/home')
@@ -38,12 +41,16 @@ def menu():
 @app.route('/add_to_cart/<item_id>', methods=['POST'])
 def add_to_cart_route(item_id):
     add_to_cart(item_id)
-    return redirect(url_for('cart'))
+    return redirect(url_for('menu'))  # Redirect back to the menu page after adding an item to the cart
+
 
 @app.route('/remove_from_cart/<item_id>', methods=['POST'])
-def remove_from_cart(item_id):
-    remove_from_cart(item_id)  # Remove item from cart
-    return redirect(url_for('cart'))  # Redirect back to the cart
+def remove_from_cart_route(item_id):
+    # Call the function to remove the item from the cart
+    remove_from_cart(item_id)
+    
+    # Redirect to the cart page after removing the item
+    return redirect(url_for('cart'))
 
 
 @app.route('/cart', methods=['GET', 'POST'])

@@ -40,7 +40,11 @@ def add_to_cart(item_id):
 def remove_from_cart(item_id):
     conn = create_connection()
     cursor = conn.cursor()
+    
+    # Remove item from cart table
     cursor.execute("DELETE FROM cart WHERE item_id=?", (item_id,))
+    
+    # Commit the changes
     conn.commit()
     conn.close()
 

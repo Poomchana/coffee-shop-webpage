@@ -9,9 +9,20 @@ def get_user_by_username(username):
     conn = create_connection()
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM users WHERE username=?", (username,))
-    user = cursor.fetchone()
+    user = cursor.fetchone()  # Fetch the user (returns a tuple)
     conn.close()
-    return user
+
+    # If user exists, return a dictionary with column names as keys
+    if user:
+        user_dict = {
+            'id': user[0],         # Assuming 'id' is the first column
+            'username': user[1],   # Assuming 'username' is the second column
+            'password': user[2],   # Assuming 'password' is the third column
+            'role': user[3],       # Assuming 'role' is the fourth column
+            'is_active': user[4]   # Assuming 'is_active' is the fifth column
+        }
+        return user_dict
+    return None
 
 
 def get_all_menu_items():
