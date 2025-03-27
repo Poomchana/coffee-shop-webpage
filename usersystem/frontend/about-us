@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop - FAQ</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+         body {
+            background-color: #FAEBD7;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .logo {
+            font-size: 2em;
+            padding: 5px 10px;
+            /* เอา border ออก */
+            border-radius: 10px;
+            margin: 20px 0;
+            display: inline-block;
+            color: #ffffff;
+        }
+        header {
+            background-color: #40a168;
+            padding: 0px;
+            color: white;
+        }
+        .form-container {
+            text-align: center;
+            background-color: #40a168;
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            margin: 20px auto;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        form input {
+            display: block;
+            width: 80%;
+            margin: 10px 0;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #ffffff;
+            color: rgb(2, 2, 2);
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ffffff;
+        }
+        nav {
+            background-color: #D2B48C;
+            padding: 15px;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav > ul > li {
+            margin: 0 10px;
+        }
+        .menu-item {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+        .menu-item:hover {
+            background-color: #ffffff;
+            border-radius: 3px;
+        }
+        #active {
+            background-color: #ffffff;
+            border-radius: 3px;
+        }
+        .auth {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .auth a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .auth a:hover {
+            color: #d8d5d5;
+        }
+        .store-info {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #F5F5DC;
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+        .store-info img {
+            width: 200px;
+            height: 150px;
+            background-color: #ccc;
+            display: block;
+            border-radius: 10px;
+        }
+        .store-details, .contact-details {
+            font-family: sans-serif;
+            font-size: 1.5rem;
+            color: #3e3e3e;
+        }
+        .contact-details {
+           
+            margin-top: 20px;
+        }
+       
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">☕ Coffee Shop</div>
+        <nav>
+            <ul>
+                <li><a href="#" class="menu-item">HOME</a></li>
+                <li><a href="#" class="menu-item">MENU</a></li>
+                <li><a href="#" class="menu-item">Track Status</a></li>
+                <li><a href="#" class="menu-item" id="active">ABOUT US</a></li>
+                <li><a href="#" class="menu-item">FAQ</a></li>
+            </ul>
+        </nav>
+        <div class="auth">
+            <a href="#">Login</a> | <a href="#">Sign in</a>
+        </div>
+    </header>
+</article>
+<section class="store-info">
+    <div>
+        <h3>ที่ตั้งร้าน</h3>
+        <img src="Image/location.png" alt="ร้านค้า">
+    </div>
+    <div class="store-details">
+        <h4><strong>ตั้งอยู่</strong></h4>
+        <p>...................................</p>
+        <p>...................................</p>
+    </div>
+</section>
+<section class="contact-details">
+    <h3>ติดต่อ</h3>
+    <p><strong>Facebook:</strong> ........</p>
+    <p><strong>Instagram:</strong> ........</p>
+    <p><strong>Line@:</strong> ...........</p>
+    <p><strong>Tel:</strong> ..............</p>
+</section>
+</main>
+</body>
+</html>
