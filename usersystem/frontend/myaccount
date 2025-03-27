@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop - Sign In</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #FAEBD7;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .logo {
+            font-size: 2em;
+            padding: 5px 10px;
+            /* เอา border ออก */
+            border-radius: 10px;
+            margin: 20px 0;
+            display: inline-block;
+            color: #ffffff;
+        }
+        header {
+            background-color: #40a168;
+            padding: 0px;
+            color: white;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        form input {
+            display: block;
+            width: 80%;
+            margin: 10px 0;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #ffffff;
+            color: rgb(2, 2, 2);
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #d6d6d6;
+        }
+        nav {
+            background-color: #D2B48C;
+            padding: 0px;
+            padding: 15px;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav > ul > li {
+            margin: 0 10px;
+        }
+        .menu-item {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+        .menu-item:hover {
+            background-color: #dfdbdb;
+            border-radius: 3px;
+        }
+        #active {
+            background-color: #d6d6d6;
+            border-radius: 3px;
+        }
+        .auth {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .auth a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .auth a:hover {
+            color: #d8d5d5;
+        }
+       
+        
+        .social-login button img {
+    width: 25px; 
+    height: 25px; 
+    object-fit: cover; 
+}
+
+main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .account-container {
+            background-color: #c8d9b2;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .account-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .account-header h2 {
+            margin: 0;
+        }
+
+        .account-header p {
+            margin: 5px 0 0;
+        }
+
+        .account-menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .account-menu .menu-item:last-child p {
+    color: red;
+
+}
+
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #688451;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            width: 150px;
+            margin: 10px; /* เพิ่ม margin */
+            text-align: center;
+        }
+
+        .menu-item img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .social-login button img {
+            width: 25px;
+            height: 25px;
+            object-fit: cover;
+        }
+
+        .account {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+        }
+        .account img{
+            object-fit: contain; /* ใช้ object-fit: contain; เพื่อรักษาอัตราส่วน */
+            max-width: 50px; /* กำหนดขนาดสูงสุด */
+            max-height: 50px; /* กำหนดขนาดสูงสุด */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">☕ Coffee Shop</div>
+        <nav>
+            <ul>
+                <li><a href="#" class="menu-item">HOME</a></li>
+                <li><a href="#" class="menu-item">MENU</a></li>
+                <li><a href="#" class="menu-item">Track status</a></li>
+                <li><a href="#" class="menu-item">ABOUT US</a></li>
+                <li><a href="#" class="menu-item">FAQ</a></li>
+            </ul>
+        </nav>
+        <div class="account">
+            <img src="Image/account2.webp" alt="Account">
+        </div>
+    </header>
+    <main>
+        <div class="account-container">
+            <div class="account-header">
+                <h2>My Account</h2>
+                <p>คะแนนสะสม: 21 point</p>
+            </div>
+            <div class="account-menu">
+                <div class="menu-item">
+                    <img src="Image/person.png" alt="ข้อมูลฉัน">
+                    <p>ข้อมูลฉัน</p>
+                </div>
+                <div class="menu-item">
+                    <img src="Image/trolleyt.png" alt="ประวัติการสั่งซื้อ">
+                    <p>ประวัติการสั่งซื้อ</p>
+                </div>
+                <div class="menu-item">
+                    <img src="Image/status.png" alt="ติดตามสถานะ">
+                    <p>ติดตามสถานะ</p>
+                </div>
+                <div class="menu-item">
+                    <img src="Image/coupon.png" alt="คูปองของฉัน">
+                    <p>คูปองของฉัน</p>
+                </div>
+                <div class="menu-item">
+                    <img src="Image/leave.png" alt="ออกจากระบบ">
+                    <p>ออกจากระบบ</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
